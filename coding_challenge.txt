@@ -1,0 +1,160 @@
+Challenge I)
+
+Create the database:
+For the exercise I used mySQL SQL syntax. 
+
+CREATE DATABASE upshoot;
+
+USE upshoot;
+
+CREATE TABLE MotorBikes (
+    id int NOT NULL AUTO_INCREMENT,
+    brand char(30) NOT NULL,
+    colour char(25) NOT NULL,
+    model_year smallint NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Owners(
+    id int NOT NULL AUTO_INCREMENT,
+    name char(40) NOT NULL,
+    motorbike_id int,
+    location char(24),
+    PRIMARY KEY (id),
+    FOREIGN KEY (motorbike_id) REFERENCES MotorBikes(id)
+);
+
+INSERT INTO motorbikes(brand, colour, model_year)
+VALUES 
+	('Yamaha', 'Red', 2004),
+	('Honda', 'Blue',2007),
+	('Honda','Black',2014),
+	('Suzuki','Red',2009),
+    ('Harley-Davidson','Black',2013),
+    ('Ducati','Red',2007)
+;
+INSERT INTO owners(name, motorbike_id, location)
+VALUES 
+	('Jake', 4,'51.5034722,-0.0922523'),
+	('Paul', 2,'51.5153163,-0.1011231'),
+    ('Mark', 1,'51.516758, -0.076783 '),
+    ('Paul', 3,'51.5153163,-0.1011231')
+;
+
+1)
+SELECT * FROM motorbikes;
+
+2)
+SELECT colour as Colour , COUNT( colour ) as Total
+FROM motorbikes
+GROUP BY colour
+ORDER BY colour;
+
+3)
+SELECT * FROM motorbikes
+ORDER BY model_year;
+
+4)
+SELECT name as Owner, brand as Brand, colour as Colour, model_year as 'Model Year'  
+FROM owners
+RIGHT JOIN motorbikes on owners.motorbike_id = motorbikes.id
+Group By name
+;
+
+II)
+
+Exercice 1)
+
+I used Laravel 5.6, jQuery and Bootstrap4 for this website.
+I assumed the database from the exercices I no longer existed and we had to create it using laravel.
+
+
+Exercice 2)
+
+My problem was using the sort_deck function, because I suppose you want it to be on the same deck object as the shuffle_deck was. And I can't find an easy way to write it using JS. 
+
+
+Exercice 3)
+
+I used Laravel to do the app. The frontend part is very simple here. In a production app ths have to be secured by the creation of users and roles for users and an auth system.
+Let people create and delete things from the database without auth is not a good idea (mostly if it's the main content of the page).
+
+d)
+Allow people to make search using a "natural language" is not an easy task.
+First it will depend of the language structure itself. 
+
+The process for doing such a thing looks like making a compiler for a new coding language.
+The main difference is that the language already exist and has a more complex vocabulary and you have to translate this language into an sql querry.
+
+So step 1: Analyse the syntax of the sentence , step 2 translate it into a query.
+
+For the step one the first thing would be to identify some keywords that have impact.
+	-the logic keywork eg : and,or,between,is,not,first, about...
+	-the numerous key eg : 1,2,3... one, two, three.. the,a,an
+	-the query and field key: Let you know what fields we are looking for (or not) and some key word use in SQL eg :select, from, where ..
+	-and other things like that
+
+Then we need to get the postion of this differents keywords and pay attention to word before and after because they are meaningfull (it works better for simple sentences). 
+That's why we need to set on every word a grade.
+
+eg : " I  want  a fast car"  based on key and grade we keep only key word and the best grades.
+	   0	1_	#1	_2   #1
+		this will give us :"a fast car"
+
+Step 2 translate into query:
+All the key word may be translate into logical equivalent or sql keyword element
+
+"a" eq 1 eq true
+"car" is the field name
+"fast" need to be find in the car_description field
+
+so we need to querry the car field and look into the car_description if "fast" or a byword apears; and it has to be true.
+
+This step is the more complicated part because you have to catch the meaning just trought syntax.
+A good way to increase the efficiency will be to use a large database of exemple and machine learning.
+
+
+III)If techs and time were not an issue...
+
+I want to make an app that retrieve infos from customers about their garden, and give them the best way to make it happen.
+
+The purpose of the app is to put the principles of permaculture and propose a way to organize a new garden in the best way possible based on what they have and need.
+
+It will give you the species you can grow based on your climat, the sun exposure, the season...
+What plant association you need to use for maintain a good biodiversity
+
+What are the best layers for the crops, and how make them rotate.
+
+And if the customer want, he can "share" his garden and make it public. So the customer near to him can see what he have done.
+So basicly the customer have like a social network of gardens as well with all the basics funtionality that it need to have.
+
+
+At the end the last part will take all the infos from the customers who build their garden using the app and compare it with their first diagnostic. And process all the datas throught an AI to allow better initial diagnostic for the future.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
