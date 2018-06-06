@@ -22,7 +22,8 @@ Please read also the coding_challenge.txt file for more infos about the code and
 Just try to copy every exercices separatly.
 
 Exercice 1 & 3:
-Just configure the env file for the database
+Create a new laravel project and put the files in it(you need the vendor directory).
+Then,just configure the env file for the database
 
 Exercice 2:
 It's just Javascript so you don't need anything to run it
